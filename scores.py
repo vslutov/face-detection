@@ -80,4 +80,3 @@ def average_precision(precision, recall):
             result += ((next_x - step) * prev_y + (step - prev_x) * next_y) / (next_x - prev_x)
    
     return result / 11
-                                             

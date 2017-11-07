@@ -2,11 +2,12 @@ import sys
 import os
 import pickle
 from scipy.misc import imread
-from urllib.request import urlretrieve
+
 if sys.version_info[0] == 2:
     from urllib import urlretrieve
 else:
     from urllib.request import urlretrieve
+
 import numpy as np
 import zipfile
 from skimage import color
