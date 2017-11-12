@@ -3,11 +3,11 @@
 ## Usage
 
 Download source code from [downloading page](https://github.com/vslutov/face-detection/releases),
-open `Face_Detection.ipyb` and do task. It's easy.
+open `Face_Detection.ipynb` and do task. It's easy.
 
 ## Mark rules
 
-Maximum mark for this task is 10:
+Maximum mark for this task is 10 points:
 
 - Prepare data (1 points)
   - Student extracted postive and negative samples from data.
@@ -31,7 +31,7 @@ Maximum mark for this task is 10:
 
 This repository consist of multiple files:
 
-- `Face_Detection.ipyb` -- main task, read and do.
+- `Face_Detection.ipynb` -- main task, read and do.
 - `get_data.py` -- script to download data for task, run automatically from main task.
   You don't need download data manually.
 - `scores.py` -- scores, which are using in main task.
