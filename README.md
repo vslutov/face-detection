@@ -2,7 +2,7 @@
 
 ## Usage
 
-Download source code from [downloading page](https://github.com/vslutov/face-detection/releases),
+Download source and data from [download page](https://github.com/vslutov/face-detection/releases),
 open [./Face_Detection.ipynb](Face_Detection.ipynb) and do task. It's easy.
 
 ## Mark rules
@@ -10,8 +10,8 @@ open [./Face_Detection.ipynb](Face_Detection.ipynb) and do task. It's easy.
 Maximum mark for this task is 10 points:
 
 - Prepare data (1 points)
-  - Student extracted postive and negative samples from data.
-- Classificator training (3 points)
+  - Student extracted positive and negative samples from data.
+- Classifier training (3 points)
   - Student add into model some layers.
   - Student ran fitting and validation accuracy exceeded 90%.
   - Student selected epoch with best validation loss and loaded this epoch weight.
@@ -37,7 +37,7 @@ This repository consist of multiple files:
 - `scores.py` -- scores, which are using in main task.
 - `graph.py` -- graph plotting and image showing functions.
 - `prepare_data.ipynb` -- prepare data to train and test, you may run this script and repeat
-  learning-test procedure to make sure that model haven't overfitting.
+  learning-test procedure to make sure that model haven't over-fitting.
 
 ## Dataset
 
