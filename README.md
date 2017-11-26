@@ -39,4 +39,6 @@ This repository consist of multiple files:
 - `prepare_data.ipynb` -- prepare data to train and test, you may run this script and repeat
   learning-test procedure to make sure that model haven't overfitting.
 
+## Dataset
 
+Dataset, used in this task is processed [FDDB dataset](http://vis-www.cs.umass.edu/fddb/).

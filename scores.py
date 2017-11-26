@@ -80,3 +80,20 @@ def average_precision(precision, recall):
             result += ((next_x - step) * prev_y + (step - prev_x) * next_y) / (next_x - prev_x)
    
     return result / 11
+
+def auc(x, y):
+    """Calculate auc score."""
+    x, y = np.array(x), np.array(y)
+    order = x.argsort()
+    x = x[order]
+    y = y[order]
+    
+    result = 0
+
+    for i in range(1, len(x)):
+        prev_x, next_x = x[i - 1], x[i]
+        prev_y, next_y = y[i - 1], y[i]
+        
+        result += (next_x - prev_x) * (prev_y + next_y) / 2.0
+   
+    return result

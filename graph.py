@@ -2,7 +2,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib import patches
 
-from scores import average_precision
+from scores import average_precision, auc
 
 def plot_history(history):
     # summarize history for accuracy
@@ -20,6 +20,15 @@ def plot_history(history):
     plt.ylabel('loss')
     plt.xlabel('epoch')
     plt.legend(['train', 'val'], loc='upper left')
+    plt.show()
+
+def visualize_samples(data, n_cols=5, n_rows=1):
+    """Visualize samples."""
+    plt.figure(figsize = (3*n_cols,3*n_rows))
+    for n,i in enumerate(np.random.randint(len(data), size = n_cols*n_rows)):
+        plt.subplot(n_rows,n_cols,n+1)
+        plt.axis('off')
+        plt.imshow(data[i])
     plt.show()
     
 def visualize_heatmap(images, heatmap, n_cols=5, n_rows=1):
@@ -61,7 +70,7 @@ def visualize_bboxes(images, pred_bboxes, true_bboxes=None, decision_function=No
     plt.show()
 
 def plot_precision_recall(precision, recall):
-    ap = average_precision(precision=precision, recall=recall)
+    _auc = auc(y=precision, x=recall)
 
     plt.step(recall, precision, color='b', alpha=0.2,
              where='post')
@@ -77,4 +86,4 @@ def plot_precision_recall(precision, recall):
     plt.xticks(np.arange(0, 1.05, 0.1))
     plt.yticks(np.arange(0, 1.05, 0.1))
     plt.grid(color="white")
-    plt.title('Precision-Recall curve: AP={0:0.2f}'.format(ap))
+    plt.title('Precision-Recall curve: AUC-PR={0:0.2f}'.format(_auc))
