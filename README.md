@@ -3,7 +3,7 @@
 ## Usage
 
 Download source code from [downloading page](https://github.com/vslutov/face-detection/releases),
-open `Face_Detection.ipynb` and do task. It's easy.
+open [./Face_Detection.ipynb](Face_Detection.ipynb) and do task. It's easy.
 
 ## Mark rules
 
@@ -42,3 +42,7 @@ This repository consist of multiple files:
 ## Dataset
 
 Dataset, used in this task is processed [FDDB dataset](http://vis-www.cs.umass.edu/fddb/).
+Processing explained in [./Face_Detection.ipynb](Face_Detection.ipynb) and defined in [./prepare_data.ipynb](prepare_data.ipynb)
+
+## Authors
+- Prepared by Vladimir Lutov: [github.com/vslutov](https://github.com/vslutov), [vladimir.lutov@graphics.cs.msu.ru](mailto:vladimir.lutov@graphics.cs.msu.ru)
