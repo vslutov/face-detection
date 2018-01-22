@@ -50,9 +50,11 @@ def show_bboxes(bboxes, ax, color="black", text=None):
         if text is not None:
             ax.text(bbox[1], bbox[0], text[i], color=color)
         
-def visualize_bboxes(images, pred_bboxes, true_bboxes=None, decision_function=None, n_cols=5, n_rows=1):
+def visualize_bboxes(images, pred_bboxes=None, true_bboxes=None, decision_function=None, n_cols=5, n_rows=1):
     plt.figure(figsize = (3*n_cols,3*n_rows))
-    pred_bboxes = np.array(pred_bboxes, dtype=np.int32)
+    
+    if pred_bboxes is not None:
+        pred_bboxes = np.array(pred_bboxes, dtype=np.int32)
     if true_bboxes is not None:
         true_bboxes = np.array(true_bboxes, dtype=np.int32)
 
@@ -60,10 +62,11 @@ def visualize_bboxes(images, pred_bboxes, true_bboxes=None, decision_function=No
         ax = plt.subplot(n_rows,n_cols,n+1)
         plt.axis('off')
         plt.imshow(images[i])
-        _text = (["{0:0.2f}".format(decision_function[prec]) for prec in np.where(pred_bboxes[:, 0] == i)[0]]
-                 if decision_function is not None else None)
 
-        show_bboxes(bboxes=pred_bboxes[pred_bboxes[:, 0] == i, 1:], ax=ax, color="blue", text=_text)
+        if pred_bboxes is not None:
+            _text = (["{0:0.2f}".format(decision_function[prec]) for prec in np.where(pred_bboxes[:, 0] == i)[0]]
+                     if decision_function is not None else None)
+            show_bboxes(bboxes=pred_bboxes[pred_bboxes[:, 0] == i, 1:], ax=ax, color="blue", text=_text)
         
         if true_bboxes is not None:
             show_bboxes(bboxes=true_bboxes[true_bboxes[:, 0] == i, 1:], ax=ax, color="red")
