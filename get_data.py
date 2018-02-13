@@ -12,7 +12,7 @@ import numpy as np
 import zipfile
 from skimage import color
 
-def download(filename, source='https://github.com/vslutov/face-detection/releases/download/v1.0/'):
+def download(filename, source='https://github.com/vslutov/face-detection/releases/download/v1.2/'):
     print("Downloading %s" % filename)
     urlretrieve(source+filename, filename)
 
@@ -28,29 +28,29 @@ def load_dataset(dname):
         else:
             download("data.zip")
             unpack("data.zip")
-    
+
     # BBoxes
     bboxes_filepath = os.path.join("data", "{dname}_bboxes.pkl".format(dname=dname))
     with open(bboxes_filepath, "rb") as fin:
         bboxes = pickle.load(fin)
-    
+
     # Image shapes
     image_shapes = dict()
     for bbox in bboxes:
         image_shapes[bbox[0]] = bbox[-2:]
     image_shapes = [image_shapes[key] for key in sorted(image_shapes.keys())]
-    
+
     bboxes = [bbox[:-2] for bbox in bboxes]
-    
+
     # Images
     with open(os.path.join("data", "{dname}_fnames.csv".format(dname=dname))) as fnames_fin:
         fnames = fnames_fin.read().split()
-    
+
     images = []
     for fname in fnames:
         image = imread(os.path.join("data", fname))
         if len(image.shape) == 2: # image is gray
             image = color.gray2rgb(image)
         images.append(image[:, :, :3])
-        
+
     return images, np.array(bboxes, dtype=np.int32), np.array(image_shapes, dtype=np.int32)
