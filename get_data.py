@@ -20,8 +20,8 @@ def unpack(filename):
     with zipfile.ZipFile(filename) as zf:
         zf.extractall()
 
-def load_dataset(dname):
-    if not os.path.exists(os.path.join("data", "{dname}_fnames.csv".format(dname=dname))):
+def load_dataset(path, dname):
+    if not os.path.exists(os.path.join(path, "{dname}_fnames.csv".format(dname=dname))):
         if dname == "original":
             download("original_data.zip")
             unpack("original_data.zip")
@@ -30,7 +30,7 @@ def load_dataset(dname):
             unpack("data.zip")
 
     # BBoxes
-    bboxes_filepath = os.path.join("data", "{dname}_bboxes.pkl".format(dname=dname))
+    bboxes_filepath = os.path.join(path, "{dname}_bboxes.pkl".format(dname=dname))
     with open(bboxes_filepath, "rb") as fin:
         bboxes = pickle.load(fin)
 
